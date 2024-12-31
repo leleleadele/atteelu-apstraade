@@ -1,0 +1,13 @@
+.histogram {
+    margin-right: 16px;
+
+    &Container {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 32px;
+    }
+}
+
+.title {
+    padding: 32px;
+}

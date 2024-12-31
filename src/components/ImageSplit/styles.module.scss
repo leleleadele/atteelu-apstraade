@@ -1,0 +1,24 @@
+.imageSplit {
+  display: flex;
+  flex: 1;
+  max-width: 100%;
+  //overflow: auto;
+  padding: 32px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+
+  &:not(:first-child) {
+    margin-left: 16px;
+  }
+}
+
+.image {
+  display: flex;
+}
+
+.greyscale {
+  filter: grayscale(1);
+}

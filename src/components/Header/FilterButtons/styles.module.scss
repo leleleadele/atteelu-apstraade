@@ -1,0 +1,16 @@
+.button {
+  color: #f797cf;
+  margin: 8px 0;
+
+  &:active, &:focus, &:focus-visible, &:focus-within, &:hover, &Active {
+    color: #fff;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  &Container {
+    display: flex;
+    flex-flow: column;
+    align-items: flex-start;
+  }
+}

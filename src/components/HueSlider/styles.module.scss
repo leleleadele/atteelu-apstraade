@@ -1,0 +1,40 @@
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  width: 100%;
+
+  &::-webkit-slider-runnable-track {
+    background: #f797cf;
+    height: 4px;
+  }
+
+  &::-moz-range-track {
+    background: #f797cf;
+    height: 8px;
+  }
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    margin-top: -7px;
+    background-color: #fff;;
+    height: 20px;
+    width: 12px;
+    border-radius: 8px;
+  }
+
+  &::-moz-range-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #fff;;
+    height: 20px;
+    width: 12px;
+    border-radius: 8px;
+  }
+}
+
+.container {
+  width: 100%;
+}
