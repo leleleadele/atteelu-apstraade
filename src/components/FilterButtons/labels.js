@@ -9,7 +9,7 @@ export const imageTransformations = {
   },
   bilinearResizing: {
     name: "Bilinear Resizing (4x)",
-    description: "Scales the image dimensions quadruply by calculating linear interpolations across both 2D axes for intermediate pixel values."
+    description: "Scales the image dimensions quadruply by calculating linear interpolations across both 2D axes for intermediate pixel values. (Yes, the resulting image is intentionally 4x bigger)"
   },
   predictiveCompression: {
     name: "Predictive Compression",
