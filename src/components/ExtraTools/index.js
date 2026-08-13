@@ -1,8 +1,8 @@
 import styles from "./styles.module.scss";
 import { useSelector } from "react-redux";
-import { filters } from "../../../consts";
-import HueSlider from '../../HueSlider';
-import NumberInput from '../../NumberInput';
+import { filters } from "../../consts";
+import HueSlider from '../HueSlider';
+import NumberInput from '../NumberInput';
 
 const ExtraTools = () => {
   const { activeFilter } = useSelector((state) => state.filters);

@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { useDispatch } from "react-redux";
-import { actions } from "../../../store";
+import { actions } from "../../store";
 import * as styles from "./styles.module.scss";
 
 // attēla augšupielādes pogas komponente

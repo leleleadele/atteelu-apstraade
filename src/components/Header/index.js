@@ -1,6 +1,6 @@
 import { useState } from "react";
-import ImageUpload from "./ImageUpload/ImageUpload";
-import FilterButtons from "./FilterButtons";
+import ImageUpload from "../ImageUpload/ImageUpload";
+import FilterButtons from "../FilterButtons";
 import * as styles from "./styles.module.scss";
 
 // augšējā rīkjosla

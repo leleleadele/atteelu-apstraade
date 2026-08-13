@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-import { filters } from "../../../consts";
-import { actions } from "../../../store";
+import { filters } from "../../consts";
+import { actions } from "../../store";
 import { imageTransformations } from "./labels";
-import HueSlider from "../../HueSlider";
-import NumberInput from "../../NumberInput";
+import HueSlider from "../HueSlider";
+import NumberInput from "../NumberInput";
 import * as styles from "./styles.module.scss";
 import cn from "classnames";
 
