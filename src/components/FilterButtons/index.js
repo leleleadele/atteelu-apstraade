@@ -46,14 +46,17 @@ const FilterButtons = () => {
         const shouldShowDescription = isActive || isHovered;
 
         return (
-          <div key={filter} className={styles.filterItem}>
+          <div 
+            key={filter}
+            className={styles.filterItem}
+            onMouseEnter={() => setHoveredFilter(filter)}
+            onMouseLeave={() => setHoveredFilter(null)}
+          >
             <button
               className={cn(
                 styles.button,
                 isActive ? styles.buttonActive : ""
               )}
-              onMouseEnter={() => setHoveredFilter(filter)}
-              onMouseLeave={() => setHoveredFilter(null)}
               onClick={() => handleFilterClick(filter)}
             >
               {filter}
