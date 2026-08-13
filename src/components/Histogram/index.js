@@ -51,8 +51,8 @@ const ImageHistogram = () => {
 
   return (
     <>
-      <h2 className={styles.title}>Histogram:</h2>
       <div className={styles.histogramContainer}>
+        <h2 className={styles.title}>Histogram</h2>
         <div className={styles.histogram}>
           {!!originalHistogram && (
             <>

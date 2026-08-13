@@ -1,10 +1,11 @@
 .button {
   color: #f797cf;
-  margin: 8px 0;
+  margin: 16px 0 12px;
+  font-size: 16px;
+  transition: color 0.5s ease-in-out;
 
   &:active, &:focus, &:focus-visible, &:focus-within, &:hover, &Active {
     color: #fff;
-    text-decoration: underline;
     text-underline-offset: 4px;
   }
 
@@ -13,4 +14,59 @@
     flex-flow: column;
     align-items: flex-start;
   }
+}
+
+.filterItem {
+  width: 100%;
+}
+
+.description {
+  font-size: 12px;
+  color: #ffffff86;
+  margin: 4px 0 8px 0;
+  line-height: 1.4;
+  transition: opacity 0.5s ease-in-out;
+
+  &.visible {
+    opacity: 1;
+    pointer-events: auto;
+    height: auto;
+  }
+
+  &.hidden {
+    opacity: 0;
+    pointer-events: none;
+    height: 0;
+    margin: 0;
+    overflow: hidden;
+  }
+}
+
+.extraTools {
+  width: 100%;
+  overflow: hidden;
+  padding: 8px 0;
+  margin-bottom: auto;
+  transition: opacity 0.5s ease-in-out;
+
+  &.visible {
+    opacity: 1;
+    pointer-events: auto;
+    height: auto;
+  }
+
+  &.hidden {
+    opacity: 0;
+    pointer-events: none;
+    height: 0;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.heading {
+font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;  text-transform: uppercase;
+  color: #fff;
+  opacity: 0.3;
+  margin: 0 0 20px;
 }

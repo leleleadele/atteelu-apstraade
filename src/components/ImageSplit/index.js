@@ -373,7 +373,7 @@ const ImageSplit = () => {
   return (
     <div className={styles.imageSplit}>
       <div className={styles.section}>
-        <h2>Original:</h2>
+        <h2>Original</h2>
         <div
           className={cn(
             styles.image,
@@ -386,7 +386,7 @@ const ImageSplit = () => {
 
       {activeFilter === filters.predictiveCompress && (
         <div className={styles.section}>
-          <h2>Interim:</h2>
+          <h2>Interim</h2>
           <div className={styles.image}>
             <canvas ref={interimImageCanvasRef} />
           </div>
@@ -394,7 +394,7 @@ const ImageSplit = () => {
       )}
 
       <div className={styles.section}>
-        <h2>Result:</h2>
+        <h2>Result</h2>
         <div className={styles.image}>
           <canvas ref={resultImageCanvasRef} />
         </div>
