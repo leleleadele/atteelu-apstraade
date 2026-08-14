@@ -12,7 +12,7 @@ const dispatch = useDispatch();
   };
 
   return (
-    <div className={styles.container}>
+    <div className="w-full">
       <h2>Hue:</h2>
       <input
         type="range"

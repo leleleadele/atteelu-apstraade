@@ -19,7 +19,7 @@
     -webkit-appearance: none;
     appearance: none;
     margin-top: -7px;
-    background-color: #fff;;
+    background-color: #fff;
     height: 20px;
     width: 12px;
     border-radius: 8px;
@@ -28,13 +28,9 @@
   &::-moz-range-thumb {
     -webkit-appearance: none;
     appearance: none;
-    background-color: #fff;;
+    background-color: #fff;
     height: 20px;
     width: 12px;
     border-radius: 8px;
   }
-}
-
-.container {
-  width: 100%;
 }

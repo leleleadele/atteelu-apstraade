@@ -1,7 +1,6 @@
 import React, { useRef } from "react";
 import { useDispatch } from "react-redux";
 import { actions } from "../../store";
-import * as styles from "./styles.module.scss";
 
 // attēla augšupielādes pogas komponente
 function ImageUpload() {
@@ -16,18 +15,20 @@ function ImageUpload() {
   };
 
   return (
-    <div className={styles.container}>
+    <div className="w-full">
       <input
         ref={inputRef}
         type="file"
         onChange={handleImageChange}
-        onClick={() => console.log("WOOO")}
         accept="image/*"
         id="imageInput"
         hidden
       />
-      <label className={styles.button} htmlFor="imageInput">
-        Upload Image
+      <label
+        className="block w-full self-center mx-auto uppercase font-mono font-semibold px-4 py-3 text-center rounded-xl border border-[#f797cf] text-[#f797cf] transition-colors hover:border-white hover:text-white focus:outline-none focus:ring-2 focus:ring-[#f797cf]/80 cursor-pointer"
+        htmlFor="imageInput"
+      >
+        Choose Image
       </label>
     </div>
   );

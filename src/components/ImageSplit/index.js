@@ -1,4 +1,3 @@
-import styles from "./styles.module.scss";
 import cn from "classnames";
 import { useEffect, useRef, useState } from "react";
 import { actions } from "../../store";
@@ -101,8 +100,10 @@ const ImageSplit = () => {
 
   const renderCompressedImg = (image) => {
     const interimCanvas = interimImageCanvasRef.current;
-    interimCanvas.width = image.width;
-    interimCanvas.height = image.height;
+    if (interimCanvas) {
+      interimCanvas.width = image.width;
+      interimCanvas.height = image.height;
+    }
     const interimContext = interimCanvas.getContext("2d");
     interimContext.drawImage(image, 0, 0, image.width, image.height);
 
@@ -371,13 +372,13 @@ const ImageSplit = () => {
   }, [imageURL, activeFilter, hue, medianSize]);
 
   return (
-    <div className={styles.imageSplit}>
-      <div className={styles.section}>
-        <h2>Original</h2>
+    <div className="grid grid-flow-col flex-1 w-full">
+      <div className="flex flex-col items-center justify-center flex-1 relative border-r border-mauve-700 p-8">
+        <h2 className="absolute top-5 left-5 m-0 p-2 z-10 bg-black/50 rounded">Original</h2>
         <div
           className={cn(
-            styles.image,
-            shouldRenderInGreyscale && styles.greyscale
+            "flex items-center justify-center shadow-2xl rounded",
+            shouldRenderInGreyscale && "grayscale"
           )}
         >
           <canvas ref={originalImageCanvasRef} />
@@ -385,17 +386,17 @@ const ImageSplit = () => {
       </div>
 
       {activeFilter === filters.predictiveCompress && (
-        <div className={styles.section}>
-          <h2>Interim</h2>
-          <div className={styles.image}>
+        <div className="flex flex-col items-center justify-center flex-1 relative border-r border-black p-8">
+          <h2 className="absolute top-5 left-5 m-0 p-2 z-10 bg-black/50 rounded">Interim</h2>
+          <div className="flex items-center justify-center shadow-2xl rounded">
             <canvas ref={interimImageCanvasRef} />
           </div>
         </div>
       )}
 
-      <div className={styles.section}>
-        <h2>Result</h2>
-        <div className={styles.image}>
+      <div className="flex flex-col items-center justify-center flex-1 relative p-8">
+        <h2 className="absolute top-5 left-5 m-0 p-2 z-10 bg-black/50 rounded">Result</h2>
+        <div className="flex items-center justify-center shadow-2xl rounded">
           <canvas ref={resultImageCanvasRef} />
         </div>
       </div>

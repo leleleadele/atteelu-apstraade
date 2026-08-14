@@ -40,7 +40,7 @@ export const imageTransformations = {
     description: "Replaces each target pixel value with the statistical median of its neighborhood, effective for removing salt-and-pepper noise while preserving edges."
   },
   susanFilter: {
-    name: "Susan Filter (MD3 +)",
+    name: "Susan Filter",
     description: "Uses a circular mask to detect edges and features without gradient derivatives by analyzing univalue segment assimilating nuclei (USAN) areas."
   }
 };

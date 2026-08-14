@@ -7,7 +7,6 @@ import {
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
 import { useSelector } from "react-redux";
-import * as styles from "./styles.module.scss";
 
 ChartJS.register(CategoryScale);
 ChartJS.register(LinearScale);
@@ -51,9 +50,9 @@ const ImageHistogram = () => {
 
   return (
     <>
-      <div className={styles.histogramContainer}>
-        <h2 className={styles.title}>Histogram</h2>
-        <div className={styles.histogram}>
+      <div className="flex flex-wrap justify-around p-8 border-t border-mauve-700 relative">
+        <h2 className="absolute top-5 left-5 m-0 px-3 py-2 z-10 bg-black/50 rounded-lg">Histogram</h2>
+        <div className="mr-4">
           {!!originalHistogram && (
             <>
               <div>
@@ -65,7 +64,7 @@ const ImageHistogram = () => {
             </>
           )}
         </div>
-        <div className={styles.histogram}>
+        <div className="mr-4">
           {!!resultHistogram && (
             <>
               <div>

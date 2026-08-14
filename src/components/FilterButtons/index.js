@@ -4,8 +4,7 @@ import { filters } from "../../consts";
 import { actions } from "../../store";
 import { imageTransformations } from "./labels";
 import HueSlider from "../HueSlider";
-import NumberInput from "../NumberInput";
-import * as styles from "./styles.module.scss";
+import MedianInput from "../MedianInput";
 import cn from "classnames";
 
 // komponente filtra pogu renderēšanai
@@ -30,42 +29,42 @@ const FilterButtons = () => {
       "Sobel Edge Detection": "sobelEdgeDetection",
       "Laplace Edge Detection": "laplaceEdgeDetection",
       "Median Filter": "medianFilter",
-      "Susan Filter (MD3 +)": "susanFilter"
+      "Susan Filter": "susanFilter"
     };
     return keyMap[filter] || filter;
   };
 
   return (
-    <div className={styles.buttonContainer}>
-      <h2 className={styles.heading}>Choose transformation</h2>
+    <div className="flex flex-col items-start">
+      <h2 className="font-mono uppercase text-white opacity-30 mb-4">Choose transformation</h2>
       {Object.values(filters).map((filter) => {
         const filterKey = getFilterKey(filter);
         const label = imageTransformations[filterKey];
         const isActive = activeFilter === filter;
         const isHovered = hoveredFilter === filter;
-        const shouldShowDescription = isActive || isHovered;
+        const shouldShowDescription = isActive;
 
         return (
           <div 
             key={filter}
-            className={styles.filterItem}
+            className="w-full"
+            onClick={() => handleFilterClick(filter)}
             onMouseEnter={() => setHoveredFilter(filter)}
             onMouseLeave={() => setHoveredFilter(null)}
           >
             <button
               className={cn(
-                styles.button,
-                isActive ? styles.buttonActive : ""
+                "py-2 text-base transition-colors duration-500 ease-in-out hover:text-white focus:text-white focus-visible:text-white focus-within:text-white active:text-white",
+                isActive ? "text-white" : "text-pink-300"
               )}
-              onClick={() => handleFilterClick(filter)}
             >
               {filter}
             </button>
             {label && (
               <div
                 className={cn(
-                  styles.description,
-                  shouldShowDescription ? styles.visible : styles.hidden
+                  "text-sm transition-opacity duration-500 ease-in-out mt-1 mb-2 line-clamp-3",
+                  shouldShowDescription ? "visible opacity-100! h-auto" : "h-0! m-0! pointer-events-none opacity-0"
                 )}
               >
                 {label.description}
@@ -73,12 +72,12 @@ const FilterButtons = () => {
             )}
             <div
               className={cn(
-                styles.extraTools,
-                isActive ? styles.visible : styles.hidden
+                "transition-opacity duration-500 ease-in-out overflow-hidden w-full",
+                isActive ? "opacity-100 pointer-events-auto h-auto py-2 px-0 mb-auto" : "opacity-0 pointer-events-none h-0 p-0 m-0"
               )}
             >
               {filter === filters.changeHue && <HueSlider />}
-              {filter === filters.adaptiveFilter && <NumberInput />}
+              {filter === filters.adaptiveFilter && <MedianInput />}
             </div>
           </div>
         );

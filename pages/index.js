@@ -1,7 +1,7 @@
 import Head from "next/head";
 import styles from "../src/styles/styles.module.scss";
 import ImageSplit from "../src/components/ImageSplit";
-import Header from "../src/components/Header";
+import Sidebar from "../src/components/Sidebar";
 import ImageHistogram from "../src/components/Histogram";
 
 export default function Home() {
@@ -12,7 +12,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.container}>
-        <Header />
+        <Sidebar />
         <div className={styles.content}>
           <ImageSplit />
           <ImageHistogram />

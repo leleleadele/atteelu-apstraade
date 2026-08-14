@@ -9,7 +9,7 @@ export const filters = {
   sobelEdgeDetection: "Sobel Edge Detection",
   laplaceEdgeDetection: "Laplace Edge Detection",
   adaptiveFilter: "Median Filter",
-  adaptiveFilter2: "Susan Filter (MD3 +)"
+  adaptiveFilter2: "Susan Filter"
 };
 
 export const kernels = {
