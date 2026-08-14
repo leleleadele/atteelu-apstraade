@@ -386,7 +386,7 @@ const ImageSplit = () => {
       </div>
 
       {activeFilter === filters.predictiveCompress && (
-        <div className="flex flex-col items-center justify-center flex-1 relative border-r border-black p-8">
+        <div className="flex flex-col items-center justify-center flex-1 relative border-r border-mauve-700 p-8">
           <h2 className="absolute top-5 left-5 m-0 p-2 z-10 bg-black/50 rounded">Interim</h2>
           <div className="flex items-center justify-center shadow-2xl rounded">
             <canvas ref={interimImageCanvasRef} />
