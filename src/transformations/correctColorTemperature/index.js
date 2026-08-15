@@ -1,7 +1,7 @@
 // metodes no 'rgb-lab' bibliotēkas RGB <-> LAB krāsu modeļu konvertēšanai
-import { rgb2lab, lab2rgb } from "rgb-lab";
+import { rgb2lab, lab2rgb } from 'rgb-lab';
 
-const adjustWhiteBalance = (imageData) => {
+const adjustWhiteBalance = imageData => {
   const data = imageData.data;
 
   // ejam cauri katram pikselim bildē

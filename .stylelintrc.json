@@ -1,0 +1,9 @@
+{
+  "extends": ["stylelint-config-standard-scss"],
+  "plugins": ["stylelint-order"],
+  "rules": {
+    "color-hex-length": "short",
+    "declaration-block-no-duplicate-properties": true,
+    "property-no-vendor-prefix": null
+  }
+}

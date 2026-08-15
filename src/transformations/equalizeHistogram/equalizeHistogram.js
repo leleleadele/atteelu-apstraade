@@ -1,16 +1,16 @@
-import calculateHistogram from "./calculateHistogram";
+import calculateHistogram from './calculateHistogram';
 
-const equalizeHistogram = (imageData) => {
+const equalizeHistogram = imageData => {
   const pixels = imageData.data;
   const histogram = calculateHistogram(imageData);
 
   // iegūstam histogrammas CDF (Cumulative Distribution Function)
   let cumulative = 0;
-  const cdf = histogram.map((count) => (cumulative += count));
+  const cdf = histogram.map(count => (cumulative += count));
 
   // pārnesam/normalizējam CDF uz diapazonu 0 - 255
   const totalPixels = pixels.length / 4;
-  const normalizedCdf = cdf.map((value) =>
+  const normalizedCdf = cdf.map(value =>
     Math.round((value / totalPixels) * 255)
   );
 
@@ -29,6 +29,6 @@ const equalizeHistogram = (imageData) => {
   }
 
   return imageData;
-}
+};
 
 export default equalizeHistogram;

@@ -1,25 +1,25 @@
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { actions } from "../../store";
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { actions } from '../../store';
 
 const MedianInput = () => {
   const dispatch = useDispatch();
-  const { medianSize } = useSelector((state) => state.filters);
+  const { medianSize } = useSelector(state => state.filters);
 
-  const clampMedianSize = (value) => {
+  const clampMedianSize = value => {
     const nextValue = Number.isFinite(value) ? value : 3;
     return Math.min(10, Math.max(3, nextValue));
   };
 
-  const changeMedianSize = (nextValue) => {
+  const changeMedianSize = nextValue => {
     dispatch(actions.changeMedianSize(clampMedianSize(nextValue)));
   };
 
-  const updateMedianSize = (e) => {
+  const updateMedianSize = e => {
     changeMedianSize(parseInt(e.target.value, 10));
   };
 
-  const adjustMedianSize = (delta) => {
+  const adjustMedianSize = delta => {
     changeMedianSize((medianSize || 3) + delta);
   };
 
@@ -43,7 +43,7 @@ const MedianInput = () => {
           value={medianSize}
           onChange={updateMedianSize}
           aria-label="Median size"
-          className="w-full border-0 bg-transparent px-3 py-2 text-center text-base font-medium text-white outline-none [appearance:textfield] [-moz-appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+          className="w-full [appearance:textfield] border-0 bg-transparent px-3 py-2 text-center text-base font-medium text-white outline-none [-moz-appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
         />
 
         <button

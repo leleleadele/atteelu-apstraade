@@ -1,13 +1,13 @@
-import { configureStore } from "@reduxjs/toolkit";
-import { createSlice } from "@reduxjs/toolkit";
-import { filters } from "../consts.js";
+import { configureStore } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
+import { filters } from '../consts.js';
 
 // te notiek lietotnes stāvokļa apstrāde
 export const filtersSlice = createSlice({
-  name: "filters",
+  name: 'filters',
   initialState: {
     activeFilter: filters.none,
-    imageURL: "sample.jpg",
+    imageURL: 'sample.jpg',
     hue: 0,
     medianSize: 5,
     originalHistogram: null,

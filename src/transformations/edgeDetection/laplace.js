@@ -1,7 +1,7 @@
-import applyConvolution from "../convolution/applyConvolution";
-import { kernels } from "../../consts";
+import applyConvolution from '../convolution/applyConvolution';
+import { kernels } from '../../consts';
 
-const applyLaplaceOperator = (imageData) => {
+const applyLaplaceOperator = imageData => {
   const laplaceKernel = kernels.laplace;
 
   const width = imageData.width;

@@ -1,7 +1,7 @@
 // no MD1
-import setPixel from "../_helpers/setPixel";
-import getPixel from "../_helpers/getPixel";
-import interpolate from "../_helpers/interpolate";
+import setPixel from '../_helpers/setPixel';
+import getPixel from '../_helpers/getPixel';
+import interpolate from '../_helpers/interpolate';
 
 // sourceImageData - oriģinālā attēla dati
 // newWidth, newHeigt - iegūstamā attēla izmēri
@@ -12,10 +12,10 @@ const resizeImageBilinear = (sourceImageData, newWidth, newHeight) => {
   const oldHeight = sourceImageData.height;
 
   // rada jaunu <canvas> kontekstu rezultējošajam attēlam
-  const resizedCanvas = document.createElement("canvas");
+  const resizedCanvas = document.createElement('canvas');
   resizedCanvas.width = newWidth;
   resizedCanvas.height = newHeight;
-  const resizedCtx = resizedCanvas.getContext("2d");
+  const resizedCtx = resizedCanvas.getContext('2d');
   const resizedImage = resizedCtx.getImageData(0, 0, newWidth, newHeight);
 
   // skalēšanas faktora aprēķins

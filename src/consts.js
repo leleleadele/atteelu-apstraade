@@ -1,15 +1,15 @@
 export const filters = {
-  none: "None",
-  blur: "Gaussian Blur",
-  bilinearResize: "Bilinear Resizing (4x)",
-  predictiveCompress: "Predictive Compression",
-  histogramEqualization: "Equalize Histogram",
-  changeHue: "Change Hue",
-  correctColorTemperature: "Correct Color Temperature",
-  sobelEdgeDetection: "Sobel Edge Detection",
-  laplaceEdgeDetection: "Laplace Edge Detection",
-  adaptiveFilter: "Median Filter",
-  adaptiveFilter2: "Susan Filter"
+  none: 'None',
+  blur: 'Gaussian Blur',
+  bilinearResize: 'Bilinear Resizing (4x)',
+  predictiveCompress: 'Predictive Compression',
+  histogramEqualization: 'Equalize Histogram',
+  changeHue: 'Change Hue',
+  correctColorTemperature: 'Correct Color Temperature',
+  sobelEdgeDetection: 'Sobel Edge Detection',
+  laplaceEdgeDetection: 'Laplace Edge Detection',
+  adaptiveFilter: 'Median Filter',
+  adaptiveFilter2: 'Susan Filter',
 };
 
 export const kernels = {

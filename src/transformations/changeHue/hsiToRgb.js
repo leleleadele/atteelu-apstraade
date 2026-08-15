@@ -32,6 +32,6 @@ const hsiToRgb = (h, s, i) => {
     Math.round((g + m) * 255),
     Math.round((b + m) * 255),
   ];
-}
+};
 
 export default hsiToRgb;

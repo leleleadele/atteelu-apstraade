@@ -1,5 +1,5 @@
-import hsiToRgb from "./hsiToRgb";
-import rgbToHsi from "./rgbToHsi";
+import hsiToRgb from './hsiToRgb';
+import rgbToHsi from './rgbToHsi';
 
 const changeHue = (imageData, outputImageData, deltaHue) => {
   const data = imageData.data;
@@ -31,6 +31,6 @@ const changeHue = (imageData, outputImageData, deltaHue) => {
   }
 
   return outputImageData;
-}
+};
 
 export default changeHue;

@@ -1,14 +1,14 @@
 import React from 'react';
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from 'react-redux';
 import { actions } from '../../store';
-import * as styles from "./styles.module.scss";
+import * as styles from './styles.module.scss';
 
 const HueSlider = () => {
-const dispatch = useDispatch();
-  const { hue } = useSelector((state) => state.filters);
+  const dispatch = useDispatch();
+  const { hue } = useSelector(state => state.filters);
 
-  const updateHue = (e) => {
-    dispatch(actions.changeHue(parseInt(e.target.value)))
+  const updateHue = e => {
+    dispatch(actions.changeHue(parseInt(e.target.value)));
   };
 
   return (

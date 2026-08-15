@@ -1,7 +1,7 @@
 import clamp from '../_helpers/clampPixelValue';
-import getPixel from "../_helpers/getPixel";
-import setPixel from "../_helpers/setPixel";
-import paethPredictor from "./paethPredictor";
+import getPixel from '../_helpers/getPixel';
+import setPixel from '../_helpers/setPixel';
+import paethPredictor from './paethPredictor';
 
 // funkcija, kas atkodē attēlu pēc tam, kad tas bijis saspiests ar `./encode.js` funkciju
 const inversePaethFilter = (encodedData, blankImageData) => {
@@ -12,7 +12,6 @@ const inversePaethFilter = (encodedData, blankImageData) => {
   // ejam cauri rindām un kolonnām
   for (let y = 0; y < height; y++) {
     for (let x = 0; x < width; x++) {
-
       // izmantojam Paeth Predictor pareģoto vērtību iegūšanai
       const [predictedRed, predictedGreen, predictedBlue] = paethPredictor(
         decodedData.data,
@@ -47,6 +46,6 @@ const inversePaethFilter = (encodedData, blankImageData) => {
   }
 
   return decodedData;
-}
+};
 
 export default inversePaethFilter;

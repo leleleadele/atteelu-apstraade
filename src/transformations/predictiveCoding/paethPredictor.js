@@ -1,4 +1,4 @@
-import getPixel from "../_helpers/getPixel";
+import getPixel from '../_helpers/getPixel';
 
 const paethPredictor = (imagePixels, imageWidth, x, y) => {
   // vērtība, ko izmantot pie bildes pašas kreisās un augšējās malas,
@@ -38,6 +38,6 @@ const paethPredictor = (imagePixels, imageWidth, x, y) => {
   }
 
   return result;
-}
+};
 
 export default paethPredictor;

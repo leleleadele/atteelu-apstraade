@@ -1,7 +1,7 @@
-import applyConvolution from "../convolution/applyConvolution";
-import { kernels } from "../../consts";
+import applyConvolution from '../convolution/applyConvolution';
+import { kernels } from '../../consts';
 
-const applySobelOperator = (imageData) => {
+const applySobelOperator = imageData => {
   const { sobelX, sobelY } = kernels;
 
   const width = imageData.width;

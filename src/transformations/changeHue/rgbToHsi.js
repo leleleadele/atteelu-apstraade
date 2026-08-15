@@ -20,6 +20,6 @@ const rgbToHsi = (r, g, b) => {
   }
 
   return [hue, saturation * 100, intensity * 100];
-}
+};
 
 export default rgbToHsi;

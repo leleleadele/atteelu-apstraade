@@ -1,4 +1,4 @@
-const calculateHistogram = (imageData) => {
+const calculateHistogram = imageData => {
   const histogram = new Array(256).fill(0);
   const pixels = imageData.data;
 

@@ -1,13 +1,13 @@
-import React, { useRef } from "react";
-import { useDispatch } from "react-redux";
-import { actions } from "../../store";
+import React, { useRef } from 'react';
+import { useDispatch } from 'react-redux';
+import { actions } from '../../store';
 
 // attēla augšupielādes pogas komponente
 function ImageUpload() {
   const dispatch = useDispatch();
   const inputRef = useRef(null);
 
-  const handleImageChange = (e) => {
+  const handleImageChange = e => {
     const file = e.target.files[0];
     if (file) {
       dispatch(actions.changeImage(URL.createObjectURL(file)));
@@ -25,7 +25,7 @@ function ImageUpload() {
         hidden
       />
       <label
-        className="block w-full self-center mx-auto uppercase font-mono font-semibold px-4 py-3 text-center rounded-xl border border-[#f797cf] text-[#f797cf] transition-colors hover:border-white hover:text-white focus:outline-none focus:ring-2 focus:ring-[#f797cf]/80 cursor-pointer"
+        className="mx-auto block w-full cursor-pointer self-center rounded-xl border border-[#f797cf] px-4 py-3 text-center font-mono font-semibold text-[#f797cf] uppercase transition-colors hover:border-white hover:text-white focus:ring-2 focus:ring-[#f797cf]/80 focus:outline-none"
         htmlFor="imageInput"
       >
         Choose Image

@@ -1,19 +1,19 @@
-import cn from "classnames";
-import { useEffect, useRef, useState } from "react";
-import { actions } from "../../store";
-import resizeImageBilinear from "../../transformations/resizing/bilinearResize";
-import applyConvolution from "../../transformations/convolution/applyConvolution";
-import equalizeHistogram from "../../transformations/equalizeHistogram/equalizeHistogram";
-import decodeImage from "../../transformations/predictiveCoding/decode";
-import { useDispatch, useSelector } from "react-redux";
-import { filters, kernels } from "../../consts";
-import changeHue from "../../transformations/changeHue";
-import calculateHistogram from "../../transformations/equalizeHistogram/calculateHistogram";
-import correctColorTemperature from "../../transformations/correctColorTemperature";
-import applyPaethFilter from "../../transformations/predictiveCoding/encode";
-import applySobelOperator from "../../transformations/edgeDetection/sobel";
-import applyLaplaceOperator from "../../transformations/edgeDetection/laplace";
-import applyAdaptiveMedianFilter from "../../transformations/adaptiveFiltering/median";
+import cn from 'classnames';
+import { useEffect, useRef, useState } from 'react';
+import { actions } from '../../store';
+import resizeImageBilinear from '../../transformations/resizing/bilinearResize';
+import applyConvolution from '../../transformations/convolution/applyConvolution';
+import equalizeHistogram from '../../transformations/equalizeHistogram/equalizeHistogram';
+import decodeImage from '../../transformations/predictiveCoding/decode';
+import { useDispatch, useSelector } from 'react-redux';
+import { filters, kernels } from '../../consts';
+import changeHue from '../../transformations/changeHue';
+import calculateHistogram from '../../transformations/equalizeHistogram/calculateHistogram';
+import correctColorTemperature from '../../transformations/correctColorTemperature';
+import applyPaethFilter from '../../transformations/predictiveCoding/encode';
+import applySobelOperator from '../../transformations/edgeDetection/sobel';
+import applyLaplaceOperator from '../../transformations/edgeDetection/laplace';
+import applyAdaptiveMedianFilter from '../../transformations/adaptiveFiltering/median';
 import applyAdaptiveSusanFilter from '../../transformations/adaptiveFiltering/susan';
 
 // komponente, kas renderē divus <canvas> elementus:
@@ -27,14 +27,14 @@ const ImageSplit = () => {
 
   const [shouldRenderInGreyscale, setShouldRenderInGreyscale] = useState(false);
   const { activeFilter, imageURL, hue, medianSize } = useSelector(
-    (state) => state.filters
+    state => state.filters
   );
 
   const renderOriginalImage = (image, ref) => {
     const canvas = ref.current;
     canvas.width = image.width;
     canvas.height = image.height;
-    const context = canvas.getContext("2d");
+    const context = canvas.getContext('2d');
     context.drawImage(image, 0, 0, image.width, image.height);
 
     return calculateHistogram(
@@ -42,7 +42,7 @@ const ImageSplit = () => {
     );
   };
 
-  const renderBilinearImg = (image) => {
+  const renderBilinearImg = image => {
     const resizeCoef = 4;
     const newWidth = image.width * resizeCoef;
     const newHeight = image.height * resizeCoef;
@@ -52,12 +52,12 @@ const ImageSplit = () => {
     modifiedCanvas.width = newWidth;
     modifiedCanvas.height = newHeight;
 
-    const context = modifiedCanvas.getContext("2d");
+    const context = modifiedCanvas.getContext('2d');
     context.drawImage(image, 0, 0, image.width, image.height);
 
     const outputImageData = resizeImageBilinear(
       originalCanvas
-        .getContext("2d")
+        .getContext('2d')
         .getImageData(0, 0, image.width, image.height),
       newWidth,
       newHeight
@@ -68,12 +68,12 @@ const ImageSplit = () => {
     return calculateHistogram(outputImageData);
   };
 
-  const renderGaussianBlurImg = (image) => {
+  const renderGaussianBlurImg = image => {
     const canvas = resultImageCanvasRef.current;
     canvas.width = image.width;
     canvas.height = image.height;
 
-    const context = canvas.getContext("2d");
+    const context = canvas.getContext('2d');
     context.drawImage(image, 0, 0, image.width, image.height);
 
     const sourceImageData = context.getImageData(
@@ -98,19 +98,19 @@ const ImageSplit = () => {
     return calculateHistogram(outputImageData);
   };
 
-  const renderCompressedImg = (image) => {
+  const renderCompressedImg = image => {
     const interimCanvas = interimImageCanvasRef.current;
     if (interimCanvas) {
       interimCanvas.width = image.width;
       interimCanvas.height = image.height;
     }
-    const interimContext = interimCanvas.getContext("2d");
+    const interimContext = interimCanvas.getContext('2d');
     interimContext.drawImage(image, 0, 0, image.width, image.height);
 
     const finalCanvas = resultImageCanvasRef.current;
     finalCanvas.width = image.width;
     finalCanvas.height = image.height;
-    const finalContext = finalCanvas.getContext("2d");
+    const finalContext = finalCanvas.getContext('2d');
     finalContext.drawImage(image, 0, 0, image.width, image.height);
 
     const sourceImageData = interimContext.getImageData(
@@ -139,12 +139,12 @@ const ImageSplit = () => {
     return calculateHistogram(finalImageData);
   };
 
-  const renderHistogramEqualizationImg = (image) => {
+  const renderHistogramEqualizationImg = image => {
     const canvas = resultImageCanvasRef.current;
     canvas.width = image.width;
     canvas.height = image.height;
 
-    const context = canvas.getContext("2d");
+    const context = canvas.getContext('2d');
     context.drawImage(image, 0, 0, image.width, image.height);
 
     const sourceImageData = context.getImageData(
@@ -161,12 +161,12 @@ const ImageSplit = () => {
     return calculateHistogram(outputImageData);
   };
 
-  const renderHueChangeImg = (image) => {
+  const renderHueChangeImg = image => {
     const canvas = resultImageCanvasRef.current;
     canvas.width = image.width;
     canvas.height = image.height;
 
-    const context = canvas.getContext("2d");
+    const context = canvas.getContext('2d');
     context.drawImage(image, 0, 0, image.width, image.height);
 
     const sourceImageData = context.getImageData(
@@ -187,12 +187,12 @@ const ImageSplit = () => {
     return calculateHistogram(outputImageData);
   };
 
-  const renderCorrectedColorTempImg = (image) => {
+  const renderCorrectedColorTempImg = image => {
     const canvas = resultImageCanvasRef.current;
     canvas.width = image.width;
     canvas.height = image.height;
 
-    const context = canvas.getContext("2d");
+    const context = canvas.getContext('2d');
     context.drawImage(image, 0, 0, image.width, image.height);
 
     const sourceImageData = context.getImageData(
@@ -209,12 +209,12 @@ const ImageSplit = () => {
     return calculateHistogram(outputImageData);
   };
 
-  const renderSobelImg = (image) => {
+  const renderSobelImg = image => {
     const canvas = resultImageCanvasRef.current;
     canvas.width = image.width;
     canvas.height = image.height;
 
-    const context = canvas.getContext("2d");
+    const context = canvas.getContext('2d');
     context.drawImage(image, 0, 0, image.width, image.height);
 
     const sourceImageData = context.getImageData(
@@ -230,12 +230,12 @@ const ImageSplit = () => {
     return calculateHistogram(outputImageData);
   };
 
-  const renderLaplaceImg = (image) => {
+  const renderLaplaceImg = image => {
     const canvas = resultImageCanvasRef.current;
     canvas.width = image.width;
     canvas.height = image.height;
 
-    const context = canvas.getContext("2d");
+    const context = canvas.getContext('2d');
     context.drawImage(image, 0, 0, image.width, image.height);
 
     const sourceImageData = context.getImageData(
@@ -251,12 +251,12 @@ const ImageSplit = () => {
     return calculateHistogram(outputImageData);
   };
 
-  const renderMedianFilterImg = (image) => {
+  const renderMedianFilterImg = image => {
     const canvas = resultImageCanvasRef.current;
     canvas.width = image.width;
     canvas.height = image.height;
 
-    const context = canvas.getContext("2d");
+    const context = canvas.getContext('2d');
     context.drawImage(image, 0, 0, image.width, image.height);
 
     const sourceImageData = context.getImageData(
@@ -275,12 +275,12 @@ const ImageSplit = () => {
     return calculateHistogram(outputImageData);
   };
 
-  const renderSusanFilterImg = (image) => {
+  const renderSusanFilterImg = image => {
     const canvas = resultImageCanvasRef.current;
     canvas.width = image.width;
     canvas.height = image.height;
 
-    const context = canvas.getContext("2d");
+    const context = canvas.getContext('2d');
     context.drawImage(image, 0, 0, image.width, image.height);
 
     const sourceImageData = context.getImageData(
@@ -372,13 +372,15 @@ const ImageSplit = () => {
   }, [imageURL, activeFilter, hue, medianSize]);
 
   return (
-    <div className="grid grid-flow-col flex-1 w-full">
-      <div className="flex flex-col items-center justify-center flex-1 relative border-r border-mauve-700 p-8">
-        <h2 className="absolute top-5 left-5 m-0 p-2 z-10 bg-black/50 rounded">Original</h2>
+    <div className="grid w-full flex-1 grid-flow-col">
+      <div className="relative flex flex-1 flex-col items-center justify-center border-r border-mauve-700 p-8">
+        <h2 className="absolute top-5 left-5 z-10 m-0 rounded bg-black/50 p-2">
+          Original
+        </h2>
         <div
           className={cn(
-            "flex items-center justify-center shadow-2xl rounded",
-            shouldRenderInGreyscale && "grayscale"
+            'flex items-center justify-center rounded shadow-2xl',
+            shouldRenderInGreyscale && 'grayscale'
           )}
         >
           <canvas ref={originalImageCanvasRef} />
@@ -386,17 +388,21 @@ const ImageSplit = () => {
       </div>
 
       {activeFilter === filters.predictiveCompress && (
-        <div className="flex flex-col items-center justify-center flex-1 relative border-r border-mauve-700 p-8">
-          <h2 className="absolute top-5 left-5 m-0 p-2 z-10 bg-black/50 rounded">Interim</h2>
-          <div className="flex items-center justify-center shadow-2xl rounded">
+        <div className="relative flex flex-1 flex-col items-center justify-center border-r border-mauve-700 p-8">
+          <h2 className="absolute top-5 left-5 z-10 m-0 rounded bg-black/50 p-2">
+            Interim
+          </h2>
+          <div className="flex items-center justify-center rounded shadow-2xl">
             <canvas ref={interimImageCanvasRef} />
           </div>
         </div>
       )}
 
-      <div className="flex flex-col items-center justify-center flex-1 relative p-8">
-        <h2 className="absolute top-5 left-5 m-0 p-2 z-10 bg-black/50 rounded">Result</h2>
-        <div className="flex items-center justify-center shadow-2xl rounded">
+      <div className="relative flex flex-1 flex-col items-center justify-center p-8">
+        <h2 className="absolute top-5 left-5 z-10 m-0 rounded bg-black/50 p-2">
+          Result
+        </h2>
+        <div className="flex items-center justify-center rounded shadow-2xl">
           <canvas ref={resultImageCanvasRef} />
         </div>
       </div>

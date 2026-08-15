@@ -23,12 +23,17 @@ const applyAdaptiveSusanFilter = (imageData, sigma = 1.5, tau = 30) => {
         // te mēs apskatām tos pikseļus, kas centrālajam pikselim maskas ietvaros ir "kaimiņos"
         for (let j = -Math.floor(sigma); j <= Math.floor(sigma); j++) {
           for (let i = -Math.floor(sigma); i <= Math.floor(sigma); i++) {
-            const neighborPixelValue = getPixel(data, width, x + i, y + j)[channel];
+            const neighborPixelValue = getPixel(data, width, x + i, y + j)[
+              channel
+            ];
             const distanceToCenter = Math.sqrt(i * i + j * j);
 
             // aprēķina svaru, balstoties uz pikseļa attālumu no maskas centra
             // un uz intensitāšu starpību starp filtrējamo pikseli un pikseli dotajā maskas pozīcijā
-            const weight = Math.exp(-(distanceToCenter * distanceToCenter) / (2 * sigma * sigma) - ((centerPixelValue - neighborPixelValue) ** 2) / (2 * tau * tau));
+            const weight = Math.exp(
+              -(distanceToCenter * distanceToCenter) / (2 * sigma * sigma) -
+                (centerPixelValue - neighborPixelValue) ** 2 / (2 * tau * tau)
+            );
 
             weightedSum += neighborPixelValue * weight;
             weightSum += weight;
@@ -44,7 +49,11 @@ const applyAdaptiveSusanFilter = (imageData, sigma = 1.5, tau = 30) => {
     }
   }
 
-  const outputImageData = new ImageData(new Uint8ClampedArray(resultData), width, height);
+  const outputImageData = new ImageData(
+    new Uint8ClampedArray(resultData),
+    width,
+    height
+  );
   return outputImageData;
 };
 

@@ -3,7 +3,11 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev",
-    "start": "next start"
+    "start": "next start",
+    "format": "prettier --write .",
+    "lint": "eslint . --fix",
+    "style": "stylelint 'src/**/*.scss' --fix",
+    "fix": "npm run format && npm run lint && npm run style"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.12.0",
@@ -25,9 +29,15 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.3",
     "autoprefixer": "^10.5.4",
-    "eslint-config-prettier": "^9.0.0",
+    "eslint": "^10.8.1",
+    "eslint-config-prettier": "^9.1.2",
     "postcss": "^8.5.26",
+    "prettier": "^3.9.6",
+    "prettier-plugin-tailwindcss": "^0.8.1",
     "sass": "^1.102.0",
+    "stylelint": "^17.14.1",
+    "stylelint-config-standard-scss": "^17.0.0",
+    "stylelint-order": "^8.1.1",
     "tailwindcss": "^4.3.3"
   }
 }

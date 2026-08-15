@@ -1,5 +1,5 @@
 // no MD1
-import setPixel from "../_helpers/setPixel";
+import setPixel from '../_helpers/setPixel';
 
 const applyConvolution = (sourceImageData, outputImageData, kernel) => {
   const sourceImagePixelData = sourceImageData.data;
