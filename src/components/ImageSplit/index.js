@@ -104,10 +104,11 @@ const ImageSplit = () => {
 
   const renderCompressedImg = image => {
     const interimCanvas = interimImageCanvasRef.current;
-    if (interimCanvas) {
-      interimCanvas.width = image.width;
-      interimCanvas.height = image.height;
+    if (!interimCanvas) {
+      return calculateHistogram(new ImageData(image.width, image.height));
     }
+    interimCanvas.width = image.width;
+    interimCanvas.height = image.height;
     const interimContext = interimCanvas.getContext('2d');
     interimContext.drawImage(image, 0, 0, image.width, image.height);
 
