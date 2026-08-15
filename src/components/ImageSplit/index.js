@@ -1,6 +1,8 @@
 import cn from 'classnames';
 import { useEffect, useRef, useState } from 'react';
 import { actions } from '../../store';
+import CornerTag from '../CornerTag';
+import Spinner from '../Spinner';
 import resizeImageBilinear from '../../transformations/resizing/bilinearResize';
 import applyConvolution from '../../transformations/convolution/applyConvolution';
 import equalizeHistogram from '../../transformations/equalizeHistogram/equalizeHistogram';
@@ -26,6 +28,8 @@ const ImageSplit = () => {
   const resultImageCanvasRef = useRef(null);
 
   const [shouldRenderInGreyscale, setShouldRenderInGreyscale] = useState(false);
+  const [isLoadingOriginal, setIsLoadingOriginal] = useState(false);
+  const [isLoadingResult, setIsLoadingResult] = useState(false);
   const { activeFilter, imageURL, hue, medianSize } = useSelector(
     state => state.filters
   );
@@ -304,6 +308,9 @@ const ImageSplit = () => {
     let originalHistogram;
     let resultHistogram;
 
+    setIsLoadingOriginal(true);
+    setIsLoadingResult(true);
+
     image.onload = () => {
       originalHistogram = renderOriginalImage(image, originalImageCanvasRef);
 
@@ -366,6 +373,8 @@ const ImageSplit = () => {
 
       dispatch(actions.updateOriginalHistogram(originalHistogram));
       dispatch(actions.updateResultHistogram(resultHistogram));
+      setIsLoadingOriginal(false);
+      setIsLoadingResult(false);
     };
 
     image.src = imageURL;
@@ -374,35 +383,44 @@ const ImageSplit = () => {
   return (
     <div className="grid w-full flex-1 grid-flow-col">
       <div className="relative flex flex-1 flex-col items-center justify-center border-r border-mauve-700 p-8">
-        <h2 className="absolute top-5 left-5 z-10 m-0 rounded bg-black/50 p-2">
-          Original
-        </h2>
+        <CornerTag label="Original" />
         <div
           className={cn(
-            'flex items-center justify-center rounded shadow-2xl',
+            'relative flex items-center justify-center rounded shadow-2xl',
             shouldRenderInGreyscale && 'grayscale'
           )}
         >
+          {isLoadingOriginal && (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <Spinner />
+            </div>
+          )}
           <canvas ref={originalImageCanvasRef} />
         </div>
       </div>
 
       {activeFilter === filters.predictiveCompress && (
         <div className="relative flex flex-1 flex-col items-center justify-center border-r border-mauve-700 p-8">
-          <h2 className="absolute top-5 left-5 z-10 m-0 rounded bg-black/50 p-2">
-            Interim
-          </h2>
-          <div className="flex items-center justify-center rounded shadow-2xl">
+          <CornerTag label="Interim" />
+          <div className="relative flex items-center justify-center rounded shadow-2xl">
+            {isLoadingResult && (
+              <div className="absolute inset-0 flex items-center justify-center">
+                <Spinner />
+              </div>
+            )}
             <canvas ref={interimImageCanvasRef} />
           </div>
         </div>
       )}
 
       <div className="relative flex flex-1 flex-col items-center justify-center p-8">
-        <h2 className="absolute top-5 left-5 z-10 m-0 rounded bg-black/50 p-2">
-          Result
-        </h2>
-        <div className="flex items-center justify-center rounded shadow-2xl">
+        <CornerTag label="Result" />
+        <div className="relative flex items-center justify-center rounded shadow-2xl">
+          {isLoadingResult && (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <Spinner />
+            </div>
+          )}
           <canvas ref={resultImageCanvasRef} />
         </div>
       </div>
