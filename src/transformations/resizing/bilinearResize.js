@@ -4,19 +4,14 @@ import getPixel from '../_helpers/getPixel';
 import interpolate from '../_helpers/interpolate';
 
 // sourceImageData - oriģinālā attēla dati
-// newWidth, newHeigt - iegūstamā attēla izmēri
+// newWidth, newHeight - iegūstamā attēla izmēri
 
 const resizeImageBilinear = (sourceImageData, newWidth, newHeight) => {
   // oriģinālā attēla parametri
   const oldWidth = sourceImageData.width;
   const oldHeight = sourceImageData.height;
 
-  // rada jaunu <canvas> kontekstu rezultējošajam attēlam
-  const resizedCanvas = document.createElement('canvas');
-  resizedCanvas.width = newWidth;
-  resizedCanvas.height = newHeight;
-  const resizedCtx = resizedCanvas.getContext('2d');
-  const resizedImage = resizedCtx.getImageData(0, 0, newWidth, newHeight);
+  const resizedImage = new ImageData(newWidth, newHeight);
 
   // skalēšanas faktora aprēķins
   const widthScale = oldWidth / newWidth;

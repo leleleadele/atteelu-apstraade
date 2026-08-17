@@ -65,7 +65,7 @@ const FilterButtons = () => {
             {label && (
               <div
                 className={cn(
-                  'mt-1 mb-2 line-clamp-3 text-sm transition-opacity duration-500 ease-in-out',
+                  'mt-1 mb-2 text-sm transition-opacity duration-500 ease-in-out',
                   shouldShowDescription
                     ? 'visible h-auto opacity-100!'
                     : 'pointer-events-none m-0! h-0! opacity-0'
