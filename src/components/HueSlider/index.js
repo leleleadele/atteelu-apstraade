@@ -13,7 +13,7 @@ const HueSlider = () => {
 
   return (
     <div className="w-full">
-      <h2>Hue:</h2>
+      <h2 className="mb-2 text-sm text-white/40">Hue:</h2>
       <input
         type="range"
         min="0"
